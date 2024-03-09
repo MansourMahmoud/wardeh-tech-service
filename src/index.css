@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Cairo", sans-serif;
+}
+
+.dark-style-hover {
+  @apply dark:hover:bg-darkMode-dark50 dark:hover:text-darkMode-dark950;
+}
+.dark-text {
+  @apply dark:text-darkMode-dark50;
+}
+.dark-bg {
+  @apply dark:bg-darkMode-dark950;
+}
+.dark-bg-900 {
+  @apply dark:bg-darkMode-dark900;
+}
+
+.dark-text-bg {
+  @apply dark:text-darkMode-dark50 dark:bg-darkMode-dark950;
+}
+.select-arrow-left .ant-select-selector::after {
+  content: "▼"; /* أو أي رمز آخر */
+  margin-left: 8px; /* تحديد المسافة من اليسار حسب الحاجة */
+}
