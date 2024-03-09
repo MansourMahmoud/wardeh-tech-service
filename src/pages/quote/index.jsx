@@ -123,12 +123,15 @@ const Quote = ({ isDarkModeActive }) => {
     // في داخل دالة handleMessage
     const phoneNumberIsValid = isSaudiPhoneNumberValid(phone);
 
+    // fullName
     if (fullName === "") {
       return toast.error("تأكد من كتابة اسمك");
     } else {
       formData.append("fullName", fullName);
     }
+    //
 
+    // phone
     if (!phoneNumberIsValid) {
       return toast.error(
         "خطأ في رقم الهاتف: تأكد أنك تكتب رقم الهاتف بشكل صحيح وبدون مسافات مسبوقا برمز البلد"
@@ -136,13 +139,17 @@ const Quote = ({ isDarkModeActive }) => {
     } else {
       formData.append("phone", phone);
     }
+    //
 
+    // email
     if (!emailIsValid) {
       return toast.error("رجاء اكتب إيميلك بشكل صحيح");
     } else {
       formData.append("email", email);
     }
+    //
 
+    // logoName
     if (!logoName) {
       return toast.error(
         "رجاء ادخل الإسم الذي ترغب بإستخدامه في تصميم الشعار."
@@ -150,23 +157,29 @@ const Quote = ({ isDarkModeActive }) => {
     } else {
       formData.append("logoName", logoName);
     }
+    //
 
+    // logoLanguages
     if (checkCheckbox(logoLanguages)) {
       return toast.error("رجاء اخبرنا بأي لغة سيكون الشعار ؟");
     } else {
       logoLanguages?.forEach((item) => {
         if (item.isChecked === true) {
-          formData.append("logoLanguages", item);
+          formData.append("logoLanguages", item.name);
         }
       });
     }
+    //
 
+    // whatIsLogoLanguages
     if (!whatIsLogoLanguages) {
       return toast.error("رجاء اخبرنا ما هي اللغات المستخدمه؟");
     } else {
       formData.append("whatIsLogoLanguages", whatIsLogoLanguages);
     }
+    //
 
+    // isShortcutInLogo
     if (isShortcutInLogo === null) {
       return toast.error(
         "رجاء اخبرنا هل ترغب بإستخدام أية اختصارات أو أحرف أولية في الشعار؟"
@@ -180,45 +193,85 @@ const Quote = ({ isDarkModeActive }) => {
     } else {
       formData.append("whatIsShortcutInLogo", whatIsShortcutInLogo);
     }
+    //
 
-    if (!companyVision) {
-      return toast.error("رجاء أخبرنا ما هي رؤية الشركة الخاصة بك");
-    } else {
+    // companyVision
+    // if (!companyVision) {
+    //   return toast.error("رجاء أخبرنا ما هي رؤية الشركة الخاصة بك");
+    // } else {
+    //   formData.append("companyVision", companyVision);
+    // }
+    if (companyVision) {
       formData.append("companyVision", companyVision);
     }
+    //
 
+    // isAdvertisingPhrase
     if (isAdvertisingPhrase === null) {
       return toast.error("رجاء أخبرنا هل لدي الشركة عبارة إعلانية معينة؟");
     } else if (isAdvertisingPhrase === true && !advertisingPhrase) {
       return toast.error("رجاء اكتب العبارة الإعلانية التي لدي شركتك");
     } else if (isAdvertisingPhrase === false) {
-      formData.append("isAdvertisingPhrase", "لا");
+      formData.append("advertisingPhrase", "لا");
     } else {
-      formData.append("isAdvertisingPhrase", whatIsShortcutInLogo);
+      formData.append("advertisingPhrase", advertisingPhrase);
     }
-
     //
 
+    // targetConsumerSegment
+    if (checkCheckbox(targetConsumerSegment.kind)) {
+      return toast.error("الرجاء تحقق من اختيار الجنس");
+    } else if (!targetConsumerSegment.age) {
+      return toast.error("الرجاء تحقق من كتابة العمر");
+    } else if (!targetConsumerSegment.geographicalArea) {
+      return toast.error("الرجاء تأكد من كتابة المنطقة الجغرافية المستهدفة");
+    } else {
+      targetConsumerSegment.kind.forEach((item) => {
+        if (item.isChecked === true) {
+          formData.append("kind", item.name);
+        }
+      });
+      formData.append("age", targetConsumerSegment.age);
+      formData.append(
+        "geographicalArea",
+        targetConsumerSegment.geographicalArea
+      );
+    }
+    //
+
+    // natureOfWork
     if (!natureOfWork) {
       return toast.error("رجاء أخبرنا ما هي طبيعة عملك.");
     } else {
       formData.append("natureOfWork", natureOfWork);
     }
+    //
 
-    if (!differenceFromCompetitors) {
-      return toast.error("رجاء اخبرنا ما الذي يجعلك مختلفاً عن منافسيك؟");
-    } else {
+    // differenceFromCompetitors
+    // if (!differenceFromCompetitors) {
+    //   return toast.error("رجاء اخبرنا ما الذي يجعلك مختلفاً عن منافسيك؟");
+    // } else {
+    //   formData.append("differenceFromCompetitors", differenceFromCompetitors);
+    // }
+    if (differenceFromCompetitors) {
       formData.append("differenceFromCompetitors", differenceFromCompetitors);
     }
+    //
 
-    if (!attractiveLogos) {
-      return toast.error(
-        "رجاء اخبرنا عن بعض الشعارات التي تعجبك أو تلفت انتباهك"
-      );
-    } else {
+    // attractiveLogos
+    // if (!attractiveLogos) {
+    //   return toast.error(
+    //     "رجاء اخبرنا عن بعض الشعارات التي تعجبك أو تلفت انتباهك"
+    //   );
+    // } else {
+    //   formData.append("attractiveLogos", attractiveLogos);
+    // }
+    if (attractiveLogos) {
       formData.append("attractiveLogos", attractiveLogos);
     }
+    //
 
+    // wantToAddImages
     if (wantToAddImages === null) {
       return toast.error(
         "رجاء اخبرنا هل ترغب بإدراج عناصر معينة في تصميم الشعار؟"
@@ -231,26 +284,60 @@ const Quote = ({ isDarkModeActive }) => {
       Array.from(images).forEach((img) => {
         formData.append("images", img);
       });
+      formData.append(
+        "wantToAddImages",
+        "لقد ادرج العميل صوراً تجدها في المرفقات"
+      );
     }
+    //
 
+    // isOldLogo
     if (isOldLogo === null) {
       return toast.error("رجاء اخبرنا هل لديك شعار قديم؟");
-    } else if (isOldLogo === true && !contentOldLogo) {
-      return toast.error("رجاء اخبرنا ما الذي لا يعجبك بشعارك القديم؟");
-    } else if (isOldLogo === false) {
-      formData.append("contentOldLogo", "لا");
-    } else {
+    }
+    // else if (isOldLogo === true && !contentOldLogo) {
+    //   return toast.error("رجاء اخبرنا ما الذي لا يعجبك بشعارك القديم؟");
+    // }
+    else if (isOldLogo === false) {
+      formData.append("isOldLogo", "لا");
+    }
+    if (isOldLogo === true && !oldLogoImage) {
+      formData.append(
+        "isOldLogo",
+        "نعم ' ولكن لم يدرج المستخدم صورة لشعاره القديم'"
+      );
+    }
+    if (isOldLogo === true && contentOldLogo) {
       formData.append("contentOldLogo", contentOldLogo);
     }
+    //
 
-    if (!colorsContent) {
-      return toast.error(
-        "رجاء اخبرنا ما الألوان التي تعجبك وترغب بإستخدامها في الشعار؟"
+    // oldLogoImage
+    if (isOldLogo === true && oldLogoImage) {
+      Array.from(oldLogoImage).forEach((img) => {
+        formData.append("images", img);
+      });
+      formData.append(
+        "oldLogoImageChecked",
+        "لقد ادرج المستخدم صورة للشعار القديم الخاص به"
       );
-    } else {
+    }
+    //
+
+    // colorsContent
+    // if (!colorsContent) {
+    //   return toast.error(
+    //     "رجاء اخبرنا ما الألوان التي تعجبك وترغب بإستخدامها في الشعار؟"
+    //   );
+    // } else {
+    //   formData.append("colorsContent", colorsContent);
+    // }
+    if (colorsContent) {
       formData.append("colorsContent", colorsContent);
     }
+    //
 
+    //
     if (isAdditionalNotes === null) {
       return toast.error("رجاء اخبرنا هنا هناك ملاحظات تود إضافتها؟");
     } else if (isAdditionalNotes === true && !additionalNotes) {
@@ -258,10 +345,9 @@ const Quote = ({ isDarkModeActive }) => {
     } else if (isAdditionalNotes === false) {
       formData.append("additionalNotes", "لا");
     } else {
-      formData.append("additionalNotes", additionalNotes);
+      formData.append("additionalNotes", `نعم ${additionalNotes}`);
     }
-
-    return;
+    //
 
     const config = {
       headers: { "content-type": "multipart/form-data" },
@@ -271,29 +357,81 @@ const Quote = ({ isDarkModeActive }) => {
       setFormLoading(true);
 
       // استخدام toast.promise للإشعارات //
-      await toast.promise(axios.post("", formData, config), {
-        loading: "برجاء الانتظار قليلا جاري ارسال رسالتك...",
-        success: (res) => {
-          setMessage({
-            fullName: "",
-            phone: "",
-            email: "",
-            region: "",
-            city: "",
-            locationDetails: "",
-          });
+      await toast.promise(
+        axios.post(
+          "https://wardeh-tech-service.onrender.com/send",
+          formData,
+          config
+        ),
+        {
+          loading: "برجاء الانتظار قليلا جاري ارسال رسالتك...",
+          success: (res) => {
+            setMessage({
+              fullName: "",
+              phone: "",
+              email: "",
+              logoName: "",
+              whatIsLogoLanguages: "",
+              whatIsShortcutInLogo: "",
+              companyVision: "",
+              advertisingPhrase: "",
+              targetConsumerSegment: {
+                kind: [
+                  {
+                    name: "الذكور",
+                    isChecked: false,
+                  },
+                  {
+                    name: "الإناث",
+                    isChecked: false,
+                  },
+                ],
+                age: "",
+                geographicalArea: "",
+              },
+              natureOfWork: "",
+              differenceFromCompetitors: "",
+              attractiveLogos: "",
+              additionalNotes: "",
+              contentOldLogo: "",
+              colorsContent: "",
+            });
 
-          return `${res.data.message}`;
-        },
+            setLogoLanguages([
+              {
+                name: "لغة واحدة",
+                isChecked: false,
+              },
+              {
+                name: "لغتان",
+                isChecked: false,
+              },
+              {
+                name: "أكثر",
+                isChecked: false,
+              },
+            ]);
+            setIsLogoLanguagesChecked(null);
+            setIsShortcutInLogo(null);
+            setIsAdvertisingPhrase(null);
+            setIsAdditionalNotes(null);
+            setImages(null);
+            setWantToAddImages(null);
+            setIsOldLogo(null);
+            setOldLogoImages(null);
 
-        error: (error) => {
-          console.error(error);
-          return (
-            `${error.response?.data?.message}` ||
-            "فشل ارسال الرسالة.. رجاء حاول مرة أخري"
-          );
-        },
-      });
+            return `${res.data.message || "تم ارسال رسالتك بنجاح"}`;
+          },
+
+          error: (error) => {
+            console.error(error);
+            return (
+              `${error.response?.data?.message}` ||
+              "فشل ارسال الرسالة.. الرجاء المحاولة مرة أخري"
+            );
+          },
+        }
+      );
     } finally {
       setFormLoading(false);
     }
