@@ -461,6 +461,7 @@ const Quote = ({ isDarkModeActive }) => {
                         <Radio
                           id={item?.name}
                           color="cyan"
+                          className="hover:before:opacity-0 dark:border-darkMode-dark50 dark:group-hover:border-darkMode-dark900"
                           checked={item?.isChecked}
                           onChange={(ev) => {
                             const isChecked = ev.target.checked;
@@ -535,6 +536,7 @@ const Quote = ({ isDarkModeActive }) => {
                     <ListItemPrefix className="mr-0">
                       <Radio
                         color="cyan"
+                        className="hover:before:opacity-0 dark:border-darkMode-dark50 dark:group-hover:border-darkMode-dark900"
                         checked={isShortcutInLogo === true}
                         onChange={() => setIsShortcutInLogo(true)}
                       />
@@ -554,6 +556,7 @@ const Quote = ({ isDarkModeActive }) => {
                     <ListItemPrefix className="mr-0">
                       <Radio
                         color="cyan"
+                        className="hover:before:opacity-0 dark:border-darkMode-dark50 dark:group-hover:border-darkMode-dark900"
                         checked={isShortcutInLogo === false}
                         onChange={() => setIsShortcutInLogo(false)}
                       />
@@ -640,6 +643,7 @@ const Quote = ({ isDarkModeActive }) => {
                     <ListItemPrefix className="mr-0">
                       <Radio
                         color="cyan"
+                        className="hover:before:opacity-0 dark:border-darkMode-dark50 dark:group-hover:border-darkMode-dark900"
                         checked={isAdvertisingPhrase === true}
                         onChange={() => setIsAdvertisingPhrase(true)}
                       />
@@ -659,6 +663,7 @@ const Quote = ({ isDarkModeActive }) => {
                     <ListItemPrefix className="mr-0">
                       <Radio
                         color="cyan"
+                        className="hover:before:opacity-0 dark:border-darkMode-dark50 dark:group-hover:border-darkMode-dark900"
                         checked={isAdvertisingPhrase === false}
                         onChange={() => setIsAdvertisingPhrase(false)}
                       />
@@ -951,6 +956,7 @@ const Quote = ({ isDarkModeActive }) => {
                     <ListItemPrefix className="mr-0">
                       <Radio
                         color="cyan"
+                        className="hover:before:opacity-0 dark:border-darkMode-dark50 dark:group-hover:border-darkMode-dark900"
                         checked={wantToAddImages === true}
                         onChange={() => setWantToAddImages(true)}
                       />
@@ -970,6 +976,7 @@ const Quote = ({ isDarkModeActive }) => {
                     <ListItemPrefix className="mr-0">
                       <Radio
                         color="cyan"
+                        className="hover:before:opacity-0 dark:border-darkMode-dark50 dark:group-hover:border-darkMode-dark900"
                         checked={wantToAddImages === false}
                         onChange={() => setWantToAddImages(false)}
                       />
@@ -1140,6 +1147,7 @@ const Quote = ({ isDarkModeActive }) => {
                     <ListItemPrefix className="mr-0">
                       <Radio
                         color="cyan"
+                        className="hover:before:opacity-0 dark:border-darkMode-dark50 dark:group-hover:border-darkMode-dark900"
                         checked={isOldLogo === true}
                         onChange={() => setIsOldLogo(true)}
                       />
@@ -1159,6 +1167,7 @@ const Quote = ({ isDarkModeActive }) => {
                     <ListItemPrefix className="mr-0">
                       <Radio
                         color="cyan"
+                        className="hover:before:opacity-0 dark:border-darkMode-dark50 dark:group-hover:border-darkMode-dark900"
                         checked={isOldLogo === false}
                         onChange={() => setIsOldLogo(false)}
                       />
@@ -1247,6 +1256,7 @@ const Quote = ({ isDarkModeActive }) => {
                     <ListItemPrefix className="mr-0">
                       <Radio
                         color="cyan"
+                        className="hover:before:opacity-0 dark:border-darkMode-dark50 dark:group-hover:border-darkMode-dark900"
                         checked={isAdditionalNotes === true}
                         onChange={() => setIsAdditionalNotes(true)}
                       />
@@ -1266,6 +1276,7 @@ const Quote = ({ isDarkModeActive }) => {
                     <ListItemPrefix className="mr-0">
                       <Radio
                         color="cyan"
+                        className="hover:before:opacity-0 dark:border-darkMode-dark50 dark:group-hover:border-darkMode-dark900"
                         checked={isAdditionalNotes === false}
                         onChange={() => setIsAdditionalNotes(false)}
                       />
