@@ -80,6 +80,7 @@ const Quote = ({ isDarkModeActive }) => {
   const [images, setImages] = useState(null);
   const [wantToAddImages, setWantToAddImages] = useState(null);
   const [isOldLogo, setIsOldLogo] = useState(null);
+  const [oldLogoImage, setOldLogoImages] = useState(null);
 
   const checkCheckbox = (arr) => arr.every((item) => item.isChecked === false);
 
@@ -338,7 +339,7 @@ const Quote = ({ isDarkModeActive }) => {
               color="blue-gray"
               className={typographyStyle}
             >
-              الإسم الكامل
+              الإسم الكامل <span className="text-red-500">*</span>
             </Typography>
             <Input
               color={isDarkModeActive ? "green" : "cyan"}
@@ -359,7 +360,7 @@ const Quote = ({ isDarkModeActive }) => {
               color="blue-gray"
               className={typographyStyle}
             >
-              رقم الجوال
+              رقم الجوال <span className="text-red-500">*</span>
             </Typography>
             <div className="relative flex">
               <Menu placement="bottom-start">
@@ -398,7 +399,7 @@ const Quote = ({ isDarkModeActive }) => {
               color="blue-gray"
               className={typographyStyle}
             >
-              البريد الإلكتروني
+              البريد الإلكتروني <span className="text-red-500">*</span>
             </Typography>
             <Input
               color={isDarkModeActive ? "green" : "cyan"}
@@ -419,7 +420,8 @@ const Quote = ({ isDarkModeActive }) => {
               color="blue-gray"
               className={typographyStyle}
             >
-              ما هو الاسم الذي ترغب باستخدامه في تصميم الشعار؟
+              ما هو الاسم الذي ترغب باستخدامه في تصميم الشعار؟{" "}
+              <span className="text-red-500">*</span>
             </Typography>
             <Input
               color={isDarkModeActive ? "green" : "cyan"}
@@ -441,7 +443,7 @@ const Quote = ({ isDarkModeActive }) => {
               color="blue-gray"
               className={typographyStyle}
             >
-              سيكون الشعار بـ..؟
+              سيكون الشعار بـ..؟ <span className="text-red-500">*</span>
             </Typography>
             <Card className="w-full bg-inherit">
               <List className="flex flex-col sm:justify-between sm:flex-row">
@@ -500,7 +502,7 @@ const Quote = ({ isDarkModeActive }) => {
                 color="blue-gray"
                 className={typographyStyle}
               >
-                ما هي اللغات المستخدمه؟
+                ما هي اللغات المستخدمه؟ <span className="text-red-500">*</span>
               </Typography>
               <Input
                 color={isDarkModeActive ? "green" : "cyan"}
@@ -525,7 +527,8 @@ const Quote = ({ isDarkModeActive }) => {
               color="blue-gray"
               className={typographyStyle}
             >
-              هل ترغب بإستخدام أية اختصارات أو أحرف أولية في الشعار؟
+              هل ترغب بإستخدام أية اختصارات أو أحرف أولية في الشعار؟{" "}
+              <span className="text-red-500">*</span>
             </Typography>
             <Card className="w-full bg-inherit">
               <List className="flex flex-col sm:justify-between sm:flex-row">
@@ -581,7 +584,8 @@ const Quote = ({ isDarkModeActive }) => {
                 color="blue-gray"
                 className={typographyStyle}
               >
-                ما هي هذه الإختصارات أو الأحرف الأولية في الشعار؟
+                ما هي هذه الإختصارات أو الأحرف الأولية في الشعار؟{" "}
+                <span className="text-red-500">*</span>
               </Typography>
               <Input
                 color={isDarkModeActive ? "green" : "cyan"}
@@ -632,7 +636,8 @@ const Quote = ({ isDarkModeActive }) => {
               color="blue-gray"
               className={typographyStyle}
             >
-              هل لدي الشركة عبارة إعلانية معينة ترغب بإدراجها مع الشعار؟
+              هل لدي الشركة عبارة إعلانية معينة ترغب بإدراجها مع الشعار؟{" "}
+              <span className="text-red-500">*</span>
             </Typography>
             <Card className="w-full bg-inherit">
               <List className="flex flex-col sm:justify-between sm:flex-row">
@@ -680,15 +685,15 @@ const Quote = ({ isDarkModeActive }) => {
             </Card>
           </div>
 
+          {/* // what is shortcut logo languages */}
           {isAdvertisingPhrase && (
-            // what is shortcut logo languages
             <div className={fieldStyle}>
               <Typography
                 variant="h6"
                 color="blue-gray"
                 className={typographyStyle}
               >
-                ما هي العبارة الإعلانية؟
+                ما هي العبارة الإعلانية؟ <span className="text-red-500">*</span>
               </Typography>
               <Input
                 color={isDarkModeActive ? "green" : "cyan"}
@@ -713,7 +718,8 @@ const Quote = ({ isDarkModeActive }) => {
               color="blue-gray"
               className={typographyStyle}
             >
-              بيانات الشريحة الإستهلاكية المستهدفة لمنشآتك:-
+              اخبرنا بالبيانات التالية عن الشريحة الإستهلاكية المستهدفة
+              لمنشأتك:-
             </Typography>
             {/* kind */}
             <div className="flex flex-col gap-4">
@@ -721,7 +727,7 @@ const Quote = ({ isDarkModeActive }) => {
                 color="blue-gray"
                 className={`${typographyStyle} md:w-1/4`}
               >
-                الجنس
+                الجنس <span className="text-red-500">*</span>
               </label>
               <Card className="w-full bg-inherit">
                 <List className="flex flex-col sm:justify-between sm:flex-row">
@@ -811,7 +817,7 @@ const Quote = ({ isDarkModeActive }) => {
                 color="blue-gray"
                 className={`${typographyStyle} md:w-1/4`}
               >
-                العمر
+                العمر <span className="text-red-500">*</span>
               </label>
               <Input
                 color={isDarkModeActive ? "green" : "cyan"}
@@ -838,7 +844,7 @@ const Quote = ({ isDarkModeActive }) => {
                 color="blue-gray"
                 className={`${typographyStyle} md:w-1/4`}
               >
-                المنطقة الجغرافية
+                المنطقة الجغرافية <span className="text-red-500">*</span>
               </label>
               <Input
                 color={isDarkModeActive ? "green" : "cyan"}
@@ -867,7 +873,7 @@ const Quote = ({ isDarkModeActive }) => {
               color="blue-gray"
               className={typographyStyle}
             >
-              ما هي طبيعة عملك؟
+              ما هي طبيعة عملك؟ <span className="text-red-500">*</span>
             </Typography>
             <Textarea
               size="lg"
@@ -945,7 +951,8 @@ const Quote = ({ isDarkModeActive }) => {
               color="blue-gray"
               className={typographyStyle}
             >
-              هل ترغب بإدراج عناصر معينة في تصميم الشعار؟
+              هل ترغب بإدراج عناصر معينة في تصميم الشعار؟{" "}
+              <span className="text-red-500">*</span>
             </Typography>
             <Card className="w-full bg-inherit">
               <List className="flex flex-col sm:justify-between sm:flex-row">
@@ -999,7 +1006,8 @@ const Quote = ({ isDarkModeActive }) => {
               <span
                 className={`pl-1 text-grbg-gray-700 font-bold dark:text-darkMode-dark50`}
               >
-                ادرج عناصر تصميم الشعار التي تريدها.
+                ادرج عناصر تصميم الشعار التي تريدها.{" "}
+                <span className="text-red-500">*</span>
               </span>
               {images ? (
                 <Badge
@@ -1136,7 +1144,7 @@ const Quote = ({ isDarkModeActive }) => {
               color="blue-gray"
               className={typographyStyle}
             >
-              هل لديك شعاراً قديما؟
+              هل لديك شعاراً قديما؟ <span className="text-red-500">*</span>
             </Typography>
             <Card className="w-full bg-inherit">
               <List className="flex flex-col sm:justify-between sm:flex-row">
@@ -1183,6 +1191,121 @@ const Quote = ({ isDarkModeActive }) => {
               </List>
             </Card>
           </div>
+
+          {isOldLogo && (
+            // old logo image
+            <div className="flex flex-col gap-y-2  group">
+              <span
+                className={`pl-1 text-grbg-gray-700 font-bold dark:text-darkMode-dark50`}
+              >
+                ادخل صورة للشعار القديم
+              </span>
+              {oldLogoImage ? (
+                <Badge
+                  withBorder
+                  className="cursor-pointer w-fit transition-all duration-200 bg-gradient-to-tr from-orange-500 to-orange-900 hover:from-orange-800 hover:to-orange-900 border-2 border-white shadow-lg shadow-black/20 "
+                  content={
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-4 h-4"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  }
+                  onClick={() => setOldLogoImages(null)}
+                >
+                  <label
+                    className={`cursor-pointer  text-center w-full ${
+                      oldLogoImage
+                        ? "h-fit rounded-md p-2"
+                        : "h-10 rounded-full"
+                    } h-fit text-sm bg-inherit border-[2px] dark:border-[1px] border-gray-300 text-grbg-gray-700 gap-1 flex items-center justify-center hover:bg-gray-300 hover:text-grbg-gray-700 transition-all duration-200 dark:hover:bg-darkMode-dark800 dark:hover:text-darkMode-dark50 dark:bg-darkMode-dark950 `}
+                  >
+                    {oldLogoImage ? (
+                      <span className="dark:text-darkMode-dark50 flex flex-col h-fit">
+                        {Array.from(oldLogoImage).map((file, index) => (
+                          <span
+                            className="dark:text-darkMode-dark50"
+                            key={index}
+                          >
+                            {file.name}
+                          </span>
+                        ))}
+                      </span>
+                    ) : (
+                      <div className="dark:text-darkMode-dark50">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                          className="w-6 h-6"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"
+                          />
+                        </svg>
+
+                        <span className="dark:text-darkMode-dark50 ">
+                          اضغط هنا لرفع صورة لشعارك القديم
+                        </span>
+                      </div>
+                    )}
+
+                    <input
+                      type="file"
+                      name="images"
+                      onChange={(ev) => {
+                        setOldLogoImages(ev.target.files);
+                      }}
+                      className="hidden"
+                    />
+                  </label>
+                </Badge>
+              ) : (
+                <label className="dark:text-darkMode-dark50 cursor-pointer overflow-hidden text-center w-full h-10 text-sm bg-inherit border-[3px] dark:border-[1px] border-gray-300 text-grbg-gray-700 rounded-full gap-1 flex items-center justify-center hover:bg-gray-300 hover:text-grbg-gray-700 transition-all duration-200 dark:hover:bg-darkMode-dark800 dark:hover:text-darkMode-dark50 dark:bg-darkMode-dark950">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"
+                    />
+                  </svg>
+
+                  <span className="dark:text-darkMode-whiteColor50 ">
+                    اضغط هنا لرفع صورة لشعارك القديم
+                  </span>
+
+                  <input
+                    type="file"
+                    name="images"
+                    onChange={(ev) => {
+                      setOldLogoImages(ev.target.files);
+                    }}
+                    className="hidden"
+                  />
+                </label>
+              )}
+            </div>
+          )}
 
           {/* <!-- attractive Logos --> */}
           {isOldLogo && (
@@ -1245,7 +1368,8 @@ const Quote = ({ isDarkModeActive }) => {
               color="blue-gray"
               className={typographyStyle}
             >
-              هل هناك اي تفاصيل أخري تود إضافتها؟
+              هل هناك اي تفاصيل أخري تود إضافتها؟{" "}
+              <span className="text-red-500">*</span>
             </Typography>
             <Card className="w-full bg-inherit">
               <List className="flex flex-col sm:justify-between sm:flex-row">
@@ -1301,7 +1425,8 @@ const Quote = ({ isDarkModeActive }) => {
                 color="blue-gray"
                 className={typographyStyle}
               >
-                اخبرنا ما هي الملاحظات التي تود إضافتها؟
+                اخبرنا ما هي الملاحظات التي تود إضافتها؟{" "}
+                <span className="text-red-500">*</span>
               </Typography>
               <Textarea
                 size="lg"
