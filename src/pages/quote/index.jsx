@@ -128,7 +128,7 @@ const Quote = ({ isDarkModeActive }) => {
 
     // fullName
     if (fullName === "") {
-      return toast.error("تأكد من كتابة اسمك");
+      return toast.error("تأكد من كتابة اسمك.");
     } else {
       formData.append("fullName", fullName);
     }
@@ -137,7 +137,7 @@ const Quote = ({ isDarkModeActive }) => {
     // phone
     if (!phoneNumberIsValid) {
       return toast.error(
-        "خطأ في رقم الهاتف: تأكد أنك تكتب رقم الهاتف بشكل صحيح وبدون مسافات مسبوقا برمز البلد"
+        "خطأ في رقم الهاتف: تأكد من كتابة رقم الهاتف بشكل صحيح وبدون مسافات، والتأكد من تضمين رمز البلد إذا لزم الأمر."
       );
     } else {
       formData.append("phone", phone);
@@ -146,7 +146,7 @@ const Quote = ({ isDarkModeActive }) => {
 
     // email
     if (!emailIsValid) {
-      return toast.error("رجاء اكتب إيميلك بشكل صحيح");
+      return toast.error("رجاءً، اكتب البريد الإلكتروني بشكل صحيح.");
     } else {
       formData.append("email", email);
     }
@@ -155,7 +155,7 @@ const Quote = ({ isDarkModeActive }) => {
     // logoName
     if (!logoName) {
       return toast.error(
-        "رجاء ادخل الإسم الذي ترغب بإستخدامه في تصميم الشعار."
+        "رجاءً، أدخل الاسم الذي ترغب في استخدامه في تصميم الشعار."
       );
     } else {
       formData.append("logoName", logoName);
@@ -164,7 +164,7 @@ const Quote = ({ isDarkModeActive }) => {
 
     // logoLanguages
     if (checkCheckbox(logoLanguages)) {
-      return toast.error("رجاء اخبرنا بأي لغة سيكون الشعار ؟");
+      return toast.error("رجاءً، أخبرنا بأي لغة سيكون الشعار؟");
     } else {
       logoLanguages?.forEach((item) => {
         if (item.isChecked === true) {
@@ -176,7 +176,7 @@ const Quote = ({ isDarkModeActive }) => {
 
     // whatIsLogoLanguages
     if (!whatIsLogoLanguages) {
-      return toast.error("رجاء اخبرنا ما هي اللغات المستخدمه؟");
+      return toast.error("رجاءً، أخبرنا ما هي اللغات المستخدمة؟");
     } else {
       formData.append("whatIsLogoLanguages", whatIsLogoLanguages);
     }
@@ -185,11 +185,11 @@ const Quote = ({ isDarkModeActive }) => {
     // isShortcutInLogo
     if (isShortcutInLogo === null) {
       return toast.error(
-        "رجاء اخبرنا هل ترغب بإستخدام أية اختصارات أو أحرف أولية في الشعار؟"
+        "رجاء اخبرنا هل ترغب في استخدام أي اختصارات أو أحرف أولية في الشعار؟"
       );
     } else if (isShortcutInLogo === true && !whatIsShortcutInLogo) {
       return toast.error(
-        "رجاء اخبرنا  ما هي الإختصارات أو الأحرف الأولية في الشعار التي ترغب في استخدامها؟"
+        "رجاءً، أخبرنا ما هي الاختصارات أو الأحرف الأولية في الشعار التي ترغب في استخدامها؟"
       );
     } else if (isShortcutInLogo === false) {
       formData.append("whatIsShortcutInLogo", "لا");
@@ -211,9 +211,11 @@ const Quote = ({ isDarkModeActive }) => {
 
     // isAdvertisingPhrase
     if (isAdvertisingPhrase === null) {
-      return toast.error("رجاء أخبرنا هل لدي الشركة عبارة إعلانية معينة؟");
+      return toast.error("رجاءً، أخبرنا هل لدى الشركة عبارة إعلانية معينة؟");
     } else if (isAdvertisingPhrase === true && !advertisingPhrase) {
-      return toast.error("رجاء اكتب العبارة الإعلانية التي لدي شركتك");
+      return toast.error(
+        "رجاءً، قم بكتابة العبارة الإعلانية التي تملكها لشركتك."
+      );
     } else if (isAdvertisingPhrase === false) {
       formData.append("advertisingPhrase", "لا");
     } else {
@@ -223,16 +225,16 @@ const Quote = ({ isDarkModeActive }) => {
 
     // targetConsumerSegment
     if (checkCheckbox(targetConsumerSegment.kind)) {
-      return toast.error("الرجاء تحقق من اختيار الجنس");
+      return toast.error("الرجاء التحقق من اختيار الجنس");
     } else if (
       !targetConsumerSegment.age.from ||
       !targetConsumerSegment.age.to ||
       isNaN(targetConsumerSegment.age.from) ||
       isNaN(targetConsumerSegment.age.to)
     ) {
-      return toast.error("الرجاء تحقق من كتابة العمر");
+      return toast.error("الرجاء التحقق من كتابة العمر");
     } else if (!targetConsumerSegment.geographicalArea) {
-      return toast.error("الرجاء تأكد من كتابة المنطقة الجغرافية المستهدفة");
+      return toast.error("الرجاء التأكد من كتابة المنطقة الجغرافية المستهدفة.");
     } else {
       targetConsumerSegment.kind.forEach((item) => {
         if (item.isChecked === true) {
@@ -285,7 +287,7 @@ const Quote = ({ isDarkModeActive }) => {
     // wantToAddImages
     if (wantToAddImages === null) {
       return toast.error(
-        "رجاء اخبرنا هل ترغب بإدراج عناصر معينة في تصميم الشعار؟"
+        "رجاء أخبرنا هل ترغب في إدراج عناصر معينة في تصميم الشعار؟"
       );
     } else if (wantToAddImages === true && !images) {
       return toast.error("رجاء ارفق بعض العناصر في تصميم الشعار");
@@ -297,14 +299,14 @@ const Quote = ({ isDarkModeActive }) => {
       });
       formData.append(
         "wantToAddImages",
-        "لقد ادرج العميل صوراً تجدها في المرفقات"
+        "لقد قام العميل بإرفاق الصور، يمكنك العثور عليها في المرفقات"
       );
     }
     //
 
     // isOldLogo
     if (isOldLogo === null) {
-      return toast.error("رجاء اخبرنا هل لديك شعار قديم؟");
+      return toast.error("رجاءً، هل لديك شعار قديم؟");
     }
     // else if (isOldLogo === true && !contentOldLogo) {
     //   return toast.error("رجاء اخبرنا ما الذي لا يعجبك بشعارك القديم؟");
@@ -315,7 +317,7 @@ const Quote = ({ isDarkModeActive }) => {
     if (isOldLogo === true && !oldLogoImage) {
       formData.append(
         "isOldLogo",
-        "نعم ' ولكن لم يدرج المستخدم صورة لشعاره القديم'"
+        "نعم ' ولكن لم يقم المستخدم بإرفاق صورة لشعاره القديم'"
       );
     }
     if (isOldLogo === true && contentOldLogo) {
@@ -330,7 +332,7 @@ const Quote = ({ isDarkModeActive }) => {
       });
       formData.append(
         "oldLogoImageChecked",
-        "لقد ادرج المستخدم صورة للشعار القديم الخاص به"
+        "لقد أدرج المستخدم صورة للشعار القديم الخاص به."
       );
     }
     //
@@ -350,9 +352,9 @@ const Quote = ({ isDarkModeActive }) => {
 
     //
     if (isAdditionalNotes === null) {
-      return toast.error("رجاء اخبرنا هنا هناك ملاحظات تود إضافتها؟");
+      return toast.error("رجاءً، أخبرنا ما هي الملاحظات التي تود إضافتها؟");
     } else if (isAdditionalNotes === true && !additionalNotes) {
-      return toast.error("رجاء اخبرنا ما هي الملاحظات التي تود إضافتها؟");
+      return toast.error("رجاءً، أخبرنا ما هي الملاحظات التي تود إضافتها؟");
     } else if (isAdditionalNotes === false) {
       formData.append("additionalNotes", "لا");
     } else {
@@ -375,7 +377,7 @@ const Quote = ({ isDarkModeActive }) => {
           config
         ),
         {
-          loading: "برجاء الانتظار قليلا جاري ارسال رسالتك...",
+          loading: "برجاء الانتظار قليلاً، جارٍّ إرسال رسالتك...",
           success: (res) => {
             setMessage({
               fullName: "",
@@ -469,10 +471,10 @@ const Quote = ({ isDarkModeActive }) => {
       <div className="flex flex-col items-center gap-5">
         <div className="flex flex-col gap-4 justify-center items-center">
           <p className="dark:text-darkMode-dark50 text-center text-darkMode-dark950 text-2xl font-bold tracking-wider">
-            نموذج اللوغو
+            نموذج اللوجو
           </p>
           <p className="dark:text-darkMode-dark400 text-center text-darkMode-dark500 text-sm tracking-wide mb-5 w-[90%]">
-            أهلا وسهلا بك، سسيساعدنا هذا النموذج في معرفة كيف سنساعدك.
+            أهلاً وسهلاً بك، سيساعدنا هذا النموذج في معرفة كيف يمكننا مساعدتك.
           </p>
         </div>
         <form
@@ -488,7 +490,7 @@ const Quote = ({ isDarkModeActive }) => {
               color="blue-gray"
               className={typographyStyle}
             >
-              الإسم الكامل <span className="text-red-500">*</span>
+              الاسم الكامل <span className="text-red-500">*</span>
             </Typography>
             <Input
               color={isDarkModeActive ? "green" : "cyan"}
@@ -569,7 +571,7 @@ const Quote = ({ isDarkModeActive }) => {
               color="blue-gray"
               className={typographyStyle}
             >
-              ما هو الاسم الذي ترغب باستخدامه في تصميم الشعار؟{" "}
+              ما هو الاسم الذي ترغب في استخدامه في تصميم الشعار؟{" "}
               <span className="text-red-500">*</span>
             </Typography>
             <Input
@@ -651,11 +653,11 @@ const Quote = ({ isDarkModeActive }) => {
                 color="blue-gray"
                 className={typographyStyle}
               >
-                ما هي اللغات المستخدمه؟ <span className="text-red-500">*</span>
+                ما هي اللغات المستخدمة؟ <span className="text-red-500">*</span>
               </Typography>
               <Input
                 color={isDarkModeActive ? "green" : "cyan"}
-                label="ما هي اللغات المستخدمه"
+                label="ما هي اللغات المستخدمة؟"
                 className={`${inputStyle}`}
                 value={message.whatIsLogoLanguages}
                 onChange={(ev) =>
@@ -733,12 +735,12 @@ const Quote = ({ isDarkModeActive }) => {
                 color="blue-gray"
                 className={typographyStyle}
               >
-                ما هي هذه الإختصارات أو الأحرف الأولية في الشعار؟{" "}
+                ما هي هذه الاختصارات أو الأحرف الأولية في الشعار؟{" "}
                 <span className="text-red-500">*</span>
               </Typography>
               <Input
                 color={isDarkModeActive ? "green" : "cyan"}
-                label="اكتب الإختصارات التي تريد إضافتها ..."
+                label="اكتب الاختصارات التي تريد إضافتها ..."
                 className={`${inputStyle}`}
                 value={message.whatIsShortcutInLogo}
                 onChange={(ev) =>
@@ -867,8 +869,7 @@ const Quote = ({ isDarkModeActive }) => {
               color="blue-gray"
               className={typographyStyle}
             >
-              اخبرنا بالبيانات التالية عن الشريحة الإستهلاكية المستهدفة
-              لمنشأتك:-
+              أخبرنا بالبيانات التالية عن الشريحة الاستهلاكية المستهدفة لمنشأتك:
             </Typography>
             {/* kind */}
             <div className="flex flex-col gap-4">
@@ -1057,7 +1058,7 @@ const Quote = ({ isDarkModeActive }) => {
             <Textarea
               size="lg"
               color={isDarkModeActive ? "green" : "cyan"}
-              label=" طبيعة عملي..."
+              label=" طبيعة عملك..."
               className="mb-6 dark:text-darkMode-dark50"
               value={message.natureOfWork}
               onChange={(ev) =>
@@ -1078,12 +1079,12 @@ const Quote = ({ isDarkModeActive }) => {
               color="blue-gray"
               className={typographyStyle}
             >
-              ما الذي يجعلك مختلفا عن منافسيك؟
+              ما الذي يجعلك مميزاً عن منافسيك؟
             </Typography>
             <Textarea
               size="lg"
               color={isDarkModeActive ? "green" : "cyan"}
-              label="ما الذي يجعلك مختلفا عن منافسيك..."
+              label="ما الذي يجعلك مميزاً عن منافسيك؟..."
               className="mb-6 dark:text-darkMode-dark50"
               value={message.differenceFromCompetitors}
               onChange={(ev) =>
@@ -1104,7 +1105,7 @@ const Quote = ({ isDarkModeActive }) => {
               color="blue-gray"
               className={typographyStyle}
             >
-              اخبرنا عن بعض الشعارات التي تعجبك أو تلفت انتباهك.
+              أخبرنا عن بعض الشعارات التي تعجبك أو تلفت انتباهك.
             </Typography>
             <Textarea
               size="lg"
@@ -1130,7 +1131,7 @@ const Quote = ({ isDarkModeActive }) => {
               color="blue-gray"
               className={typographyStyle}
             >
-              هل ترغب بإدراج عناصر معينة في تصميم الشعار؟{" "}
+              هل ترغب في إدراج عناصر معينة في تصميم الشعار؟{" "}
               <span className="text-red-500">*</span>
             </Typography>
             <Card className="w-full bg-inherit">
@@ -1185,7 +1186,7 @@ const Quote = ({ isDarkModeActive }) => {
               <span
                 className={`pl-1 text-grbg-gray-700 font-bold dark:text-darkMode-dark50`}
               >
-                ادرج عناصر تصميم الشعار التي تريدها.{" "}
+                يرجى إدراج العناصر التصميمية التي ترغب فيها في الشعار.{" "}
                 <span className="text-red-500">*</span>
               </span>
               {images ? (
@@ -1246,7 +1247,7 @@ const Quote = ({ isDarkModeActive }) => {
                         </svg>
 
                         <span className="dark:text-darkMode-dark50 ">
-                          اضغط هنا لرفع صور العناصر
+                          يرجى النقر هنا لرفع صور العناصر
                         </span>
                       </div>
                     )}
@@ -1262,7 +1263,7 @@ const Quote = ({ isDarkModeActive }) => {
                         } else {
                           // إذا تجاوز العدد المسموح، إظهار رسالة خطأ
                           toast.error(
-                            "لقد حددت اكثر من 8 صور. برجاء تحديد 8 صور فقط او اقل"
+                            "لقد تم تحديد أكثر من 8 صور. يرجى تحديد 8 صور أو أقل فقط."
                           );
                         }
                       }}
@@ -1289,7 +1290,7 @@ const Quote = ({ isDarkModeActive }) => {
                   </svg>
 
                   <span className="dark:text-darkMode-whiteColor50 ">
-                    اضغط هنا لرفع صور العناصر
+                    يرجى النقر هنا لرفع صور العناصر
                   </span>
 
                   <input
@@ -1323,7 +1324,7 @@ const Quote = ({ isDarkModeActive }) => {
               color="blue-gray"
               className={typographyStyle}
             >
-              هل لديك شعاراً قديما؟ <span className="text-red-500">*</span>
+              هل لديك شعارًا قديمًا؟ <span className="text-red-500">*</span>
             </Typography>
             <Card className="w-full bg-inherit">
               <List className="flex flex-col sm:justify-between sm:flex-row">
@@ -1377,7 +1378,7 @@ const Quote = ({ isDarkModeActive }) => {
               <span
                 className={`pl-1 text-grbg-gray-700 font-bold dark:text-darkMode-dark50`}
               >
-                ادخل صورة للشعار القديم
+                يرجى إدخال صورة للشعار القديم.
               </span>
               {oldLogoImage ? (
                 <Badge
@@ -1437,7 +1438,7 @@ const Quote = ({ isDarkModeActive }) => {
                         </svg>
 
                         <span className="dark:text-darkMode-dark50 ">
-                          اضغط هنا لرفع صورة لشعارك القديم
+                          الرجاء النقر هنا لرفع صورة لشعارك القديم.
                         </span>
                       </div>
                     )}
@@ -1470,7 +1471,7 @@ const Quote = ({ isDarkModeActive }) => {
                   </svg>
 
                   <span className="dark:text-darkMode-whiteColor50 ">
-                    اضغط هنا لرفع صورة لشعارك القديم
+                    الرجاء النقر هنا لرفع صورة لشعارك القديم.
                   </span>
 
                   <input
@@ -1494,12 +1495,12 @@ const Quote = ({ isDarkModeActive }) => {
                 color="blue-gray"
                 className={typographyStyle}
               >
-                ما الذي لا يعجبك بشعارك القديم؟
+                ما الذي لا يعجبك في شعارك القديم؟
               </Typography>
               <Textarea
                 size="lg"
                 color={isDarkModeActive ? "green" : "cyan"}
-                label="ما الذي لا يعجبك بشعارك القديم؟"
+                label="ما الذي لا يعجبك في شعارك القديم؟"
                 className="mb-6 dark:text-darkMode-dark50"
                 value={message.contentOldLogo}
                 onChange={(ev) =>
@@ -1521,7 +1522,7 @@ const Quote = ({ isDarkModeActive }) => {
               color="blue-gray"
               className={typographyStyle}
             >
-              ما الألوان التي تعجبك وترغب بإستخدامها في الشعار؟
+              ما الألوان التي تعجبك وترغب في استخدامها في الشعار؟
             </Typography>
             <Textarea
               size="lg"
@@ -1547,7 +1548,7 @@ const Quote = ({ isDarkModeActive }) => {
               color="blue-gray"
               className={typographyStyle}
             >
-              هل هناك اي تفاصيل أخري تود إضافتها؟{" "}
+              هل هناك أي تفاصيل أخرى تود إضافتها؟{" "}
               <span className="text-red-500">*</span>
             </Typography>
             <Card className="w-full bg-inherit">
@@ -1604,7 +1605,7 @@ const Quote = ({ isDarkModeActive }) => {
                 color="blue-gray"
                 className={typographyStyle}
               >
-                اخبرنا ما هي الملاحظات التي تود إضافتها؟{" "}
+                يرجى إخبارنا بأي ملاحظات تود إضافتها.{" "}
                 <span className="text-red-500">*</span>
               </Typography>
               <Textarea
