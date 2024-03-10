@@ -45,7 +45,10 @@ const Quote = ({ isDarkModeActive }) => {
           isChecked: false,
         },
       ],
-      age: "",
+      age: {
+        from: "",
+        to: "",
+      },
       geographicalArea: "",
     },
     natureOfWork: "",
@@ -221,7 +224,12 @@ const Quote = ({ isDarkModeActive }) => {
     // targetConsumerSegment
     if (checkCheckbox(targetConsumerSegment.kind)) {
       return toast.error("الرجاء تحقق من اختيار الجنس");
-    } else if (!targetConsumerSegment.age) {
+    } else if (
+      !targetConsumerSegment.age.from ||
+      !targetConsumerSegment.age.to ||
+      isNaN(targetConsumerSegment.age.from) ||
+      isNaN(targetConsumerSegment.age.to)
+    ) {
       return toast.error("الرجاء تحقق من كتابة العمر");
     } else if (!targetConsumerSegment.geographicalArea) {
       return toast.error("الرجاء تأكد من كتابة المنطقة الجغرافية المستهدفة");
@@ -231,7 +239,10 @@ const Quote = ({ isDarkModeActive }) => {
           formData.append("kind", item.name);
         }
       });
-      formData.append("age", targetConsumerSegment.age);
+      formData.append(
+        "age",
+        `من ${targetConsumerSegment.age.from} الي ${targetConsumerSegment.age.to}`
+      );
       formData.append(
         "geographicalArea",
         targetConsumerSegment.geographicalArea
@@ -359,7 +370,7 @@ const Quote = ({ isDarkModeActive }) => {
       // استخدام toast.promise للإشعارات //
       await toast.promise(
         axios.post(
-          "https://wardeh-tech-service.onrender.com/send",
+          "https://wardeh-tech-service.onrender/send",
           formData,
           config
         ),
@@ -436,7 +447,7 @@ const Quote = ({ isDarkModeActive }) => {
       setFormLoading(false);
     }
   };
-
+  console.log(message);
   const typographyStyle = "-mb-3 dark-text text-darkMode-dark950";
   const inputStyle =
     "placeholder:text-gray-200 dark-text text-darkMode-dark950";
@@ -957,22 +968,52 @@ const Quote = ({ isDarkModeActive }) => {
               >
                 العمر <span className="text-red-500">*</span>
               </label>
-              <Input
-                color={isDarkModeActive ? "green" : "cyan"}
-                label="تفاصيل العمر"
-                className={`${inputStyle}`}
-                value={message.targetConsumerSegment.age}
-                onChange={(ev) =>
-                  setMessage({
-                    ...message,
-                    targetConsumerSegment: {
-                      ...message.targetConsumerSegment,
-                      age: ev.target.value,
-                    },
-                  })
-                }
-                name="whatIsLogoLanguages"
-              />
+              <div className="flex items-center flex-col md:flex-row gap-2">
+                {/* from */}
+                <div className="flex items-center justify-center gap-2">
+                  <label>من</label>
+                  <Input
+                    color={isDarkModeActive ? "green" : "cyan"}
+                    className={`${inputStyle}`}
+                    value={message.targetConsumerSegment.age.from}
+                    onChange={(ev) =>
+                      setMessage({
+                        ...message,
+                        targetConsumerSegment: {
+                          ...message.targetConsumerSegment,
+                          age: {
+                            ...message.targetConsumerSegment.age,
+                            from: ev.target.value,
+                          },
+                        },
+                      })
+                    }
+                    type="number"
+                  />
+                </div>
+                {/* to */}
+                <div className="flex items-center justify-center gap-2">
+                  <label>الي</label>
+                  <Input
+                    color={isDarkModeActive ? "green" : "cyan"}
+                    className={`${inputStyle}`}
+                    value={message.targetConsumerSegment.age.to}
+                    onChange={(ev) =>
+                      setMessage({
+                        ...message,
+                        targetConsumerSegment: {
+                          ...message.targetConsumerSegment,
+                          age: {
+                            ...message.targetConsumerSegment.age,
+                            to: ev.target.value,
+                          },
+                        },
+                      })
+                    }
+                    type="number"
+                  />
+                </div>{" "}
+              </div>
             </div>
             {/* end */}
 
