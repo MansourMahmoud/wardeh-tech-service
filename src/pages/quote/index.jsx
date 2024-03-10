@@ -469,7 +469,7 @@ const Quote = ({ isDarkModeActive }) => {
       <div className="flex flex-col items-center gap-5">
         <div className="flex flex-col gap-4 justify-center items-center">
           <p className="dark:text-darkMode-dark50 text-center text-darkMode-dark950 text-2xl font-bold tracking-wider">
-            نموذج
+            نموذج اللوغو
           </p>
           <p className="dark:text-darkMode-dark400 text-center text-darkMode-dark500 text-sm tracking-wide mb-5 w-[90%]">
             أهلا وسهلا بك، سسيساعدنا هذا النموذج في معرفة كيف سنساعدك.
