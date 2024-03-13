@@ -994,7 +994,7 @@ const Quote = ({ isDarkModeActive }) => {
                 </div>
                 {/* to */}
                 <div className="flex items-center justify-center gap-2">
-                  <label>الي</label>
+                  <label>الى</label>
                   <Input
                     color={isDarkModeActive ? "green" : "cyan"}
                     className={`${inputStyle}`}
