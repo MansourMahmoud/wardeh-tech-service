@@ -372,7 +372,7 @@ const Quote = ({ isDarkModeActive }) => {
       // استخدام toast.promise للإشعارات //
       await toast.promise(
         axios.post(
-          "https://wardeh-tech-service.onrender/send",
+          "https://wardeh-tech-service.onrender.com/send",
           formData,
           config
         ),
